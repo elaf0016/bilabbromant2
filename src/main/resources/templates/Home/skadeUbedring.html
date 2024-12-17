@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/forsi.css}">
+    <link rel="stylesheet" th:href="@{/table.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+
+    <title>SkadeUdbedring</title>
+</head>
+<body>
+<div class="page">
+    <div class="nav">
+        <img id="logo" src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_128/BILABONNEMENT_rgb_m2nbaw.svg" alt="logo">
+
+
+
+        <div class="section">
+            <a href="/lejeaftale/dataregForsiden">
+                <img src="/images/database.png">
+                <h3>Dataregistrering</h3>
+            </a>
+        </div>
+        <div class="section">
+            <a href="/skadeUbedring">
+                <img src="/images/tools.png">
+                <h3>Skade&Udbedring</h3>
+            </a>
+        </div>
+        <div class="section">
+            <a href="/statistik">
+                <img src="/images/briefcase.png">
+                <h3>Forretningsudvikler</h3>
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h2>Skade&Udbedring</h2>
+        <div class="main-buttons">
+
+            <a href="/tilbagelevering/create">
+                <button>Opret Tilbageleverings Rapport</button>
+            </a>
+            <a href="/fejlMangler/create">
+                <button >Opret Fejl</button>
+            </a>
+            <a href="/skadeUbedring">
+                <button id="active">Alle Tilbageleveringer</button>
+            </a>
+
+        </div>
+        <h4>Alle TilbageLeveringer</h4>
+
+        <div class="dynamic-content">
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>Tilbage Id</th>
+                    <th>Leje Id</th>
+                    <th>Stel.nr</th>
+                    <th>Aflev.Dato</th>
+                    <th>Tilstandsrapport</th>
+                    <th>Status</th>
+                    <td>Action</td>
+
+
+
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="tilbagelevering : ${tilbageleveringer}">
+                    <td th:text="${tilbagelevering.tilbagelevering_id}"></td>
+                    <td th:text="${tilbagelevering.lejeaftale_id}"></td>
+                    <td th:text="${tilbagelevering.stelnummer}"></td>
+                    <td th:text="${tilbagelevering.afleveringsdato}"></td>
+                    <td th:text="${tilbagelevering.tilstandsrapport}"></td>
+                    <td th:text="${tilbagelevering.status}"></td>
+                    <td id="table-buttons">
+                        <a th:href="@{/skadeUbedring}">
+                            <img th:src="@{/images/view.png}" alt="edit">
+                        </a>
+
+                    <td/>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <h4>Alle Fejl </h4>
+
+        <div class="dynamic-content">
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>Fejl ID</th>
+                    <th>Tilbagelevering</th>
+                    <th>Beskrivelse</th>
+                    <th>Pris</th>
+                    <td>Action</td>
+
+
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="fejlmangler : ${fejlMangler}">
+                    <td th:text="${fejlmangler.fejl_id}"></td>
+                    <td th:text="${fejlmangler.tilbagelevering_id}"></td>
+                    <td th:text="${fejlmangler.beskrivelse}"></td>
+                    <td th:text="${fejlmangler.pris}"></td>
+
+                    <td id="table-buttons">
+                        <a th:href="@{/skadeUbedring}">
+                            <img th:src="@{/images/view.png}" alt="edit">
+                        </a>
+
+                    <td/>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

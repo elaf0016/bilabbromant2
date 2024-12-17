@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/forsi.css}">
-    <link rel="stylesheet" th:href="@{/Forretningsudvikler/opretBil.css}">
+    <link rel="stylesheet" th:href="@{/opretForm.css}">
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap}">
-    <title>Title</title>
+    <title>CreateTilbagekevering</title>
 </head>
 <body>
 <div class="page">
@@ -21,70 +21,61 @@
             </a>
         </div>
         <div class="section">
-            <a href="/">
+            <a href="/skadeUbedring">
                 <img src="/images/tools.png">
                 <h3>Skade&Udbedring</h3>
             </a>
         </div>
         <div class="section">
-            <a href="/forretningsudvikler/udlejet">
+            <a href="/statistik">
                 <img src="/images/briefcase.png">
                 <h3>Forretningsudvikler</h3>
             </a>
         </div>
     </div>
     <div class="main-content">
-        <h2>Forretningsudvikler</h2>
+        <h2>Skade&Udbedring</h2>
         <div class="main-buttons">
-            <a href="/lejeaftale/create">
-                <button>Opret lejeaftale</button>
+
+            <a href="/tilbagelevering/create">
+                <button id="active">Opret Tilbageleverings Rapport</button>
             </a>
-            <a href="/bil/create">
-                <button id="active">Opret bil</button>
+            <a href="/fejlMangler/create">
+                <button >Opret Fejl</button>
             </a>
-            <a href="/lejeaftale/dataregForsiden">
-                <button>Alle lejeaftaler</button>
+            <a href="/skadeUbedring">
+                <button>Alle Tilbageleveringer</button>
             </a>
 
-            <a href="/">
-                <button>Alle Biler</button>
-            </a>
         </div>
         <div class="create-container">
             <div class="create-form">
-                <h3>Opret Bil</h3>
+                <h3>Opret Tilbageleverings Rapport</h3>
                 <div class="form">
-                    <form th:action="@{/forretningsudvikler/opret_bil}" method="post">
+                    <form th:action="@{ /tilbagelevering/create}" method="post">
+
+                        <label>
+                            Lejeaftale ID:
+                            <input type="text" th:field="${tilbagelevering.lejeaftale_id}">
+                        </label>
                         <label>
                             Stelnummer:
-                            <input type="text" th:field="${car.stelnummer}">
+                            <input type="text" th:field="${tilbagelevering.stelnummer}">
                         </label>
                         <label>
-                            Mærke:
-                            <input type="text" th:field="${car.mærke}">
+                            Afleverings Dato:
+                            <input type="date" th:field="${tilbagelevering.afleveringsdato}">
                         </label>
                         <label>
-                            Model:
-                            <input type="text" th:field="${car.model}">
+                            TilstandsRapport:
+                            <input type="text" th:field="${tilbagelevering.tilstandsrapport}">
                         </label>
                         <label>
-                            Brændstof:
-                            <input type="text" th:field="*{car.brandstof}">
-                        </label>
-                        <label>
-                            Odometer:
-                            <input type="number" th:field="*{car.odometer}">
-                        </label>
-                        <label for="bilStatus">
                             Status:
-                            <select name="bilStatus" id="bilStatus">
-                                <option value="Tilgængelig">Tilgængelig</option>
-                            </select>
+                            <input type="text" th:field="${tilbagelevering.status}">
                         </label>
-                        <label>
-                            Image url:
-                            <input type="text">
-                        </label>
+
+
 
                         <button type="submit">Create</button>
                     </form>

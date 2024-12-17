@@ -31,7 +31,7 @@ public class BilController {
     @PostMapping("/bil/create")
     public String createBil(@ModelAttribute Bil b) {
         bilService.addBil(b);
-        return "redirect:/";
+        return "redirect:/bil/viewAll";
     }
 
     @GetMapping("/bil/deleteBil/{stelnummer}")
