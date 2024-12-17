@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tittel</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" th:href="@{/forsi.css}">
+        <link rel="stylesheet" th:href="@{/Forretningsudvikler/opretBil.css}">
+        <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+        <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+        <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap}">
+        <title>Title</title>
+    </head>
+    <body>
+    <div class="page">
+        <div class="nav">
+            <img id="logo" src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_128/BILABONNEMENT_rgb_m2nbaw.svg" alt="logo">
+            <h2>**</h2>
+            <div class="section">
+                <a href="/lejeaftale/dataregForsiden">
+                    <img src="/images/database.png">
+                    <h3>Dataregistrering</h3>
+                </a>
+            </div>
+            <div class="section">
+                <a href="/">
+                    <img src="/images/tools.png">
+                    <h3>Skade&Udbedring</h3>
+                </a>
+            </div>
+            <div class="section">
+                <a href="/">
+                    <img src="/images/briefcase.png">
+                    <h3>Forretningsudvikler</h3>
+                </a>
+            </div>
+        </div>
+        <div class="main-content">
+            <h2>Dataregistrering</h2>
+            <div class="main-buttons">
+                <a href="/lejeaftale/create">
+                    <button>Opret lejeaftale</button>
+                </a>
+                <a href="/bil/create">
+                    <button id="active">Opret bil</button>
+                </a>
+                <a href="/lejeaftale/dataregForsiden">
+                    <button>Alle lejeaftaler</button>
+                </a>
+
+                <a href="/bil/viewAll">
+                    <button>Alle Biler</button>
+                </a>
+                <a href="/statistik">
+                    <button>Alle udlejede biler</button>
+                </a>
+
+            </div>
+            <div class="create-container">
+                <div class="create-form">
+                    <h3>Opret Bil</h3>
+                    <div class="form">
+                        <form th:action="@{/bil/create}" method="post">
+                            <label>
+                                Stelnummer:
+                                <input type="text" th:field="${bil.stelnummer}">
+                            </label>
+                            <label>
+                                Mærke:
+                                <input type="text" th:field="${bil.mærke}">
+                            </label>
+                            <label>
+                                Model:
+                                <input type="text" th:field="${bil.model}">
+                            </label>
+                            <label>
+                                Brændstof:
+                                <input type="text" th:field="*{bil.brandstof}">
+                            </label>
+                            <label>
+                                Odometer:
+                                <input type="number" th:field="*{bil.odometer}">
+                            </label>
+
+
+
+                            <button type="submit">Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    </html>

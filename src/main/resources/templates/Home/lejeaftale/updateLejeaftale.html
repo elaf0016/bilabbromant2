@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/forsi.css}">
+    <link rel="stylesheet" th:href="@{/table.css}">
+    <link rel="stylesheet" th:href="@{/opretForm.css}">
+    <link rel="stylesheet" th:href="@{/Forretningsudvikler/redigerBil.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap}">
+    <title>Title</title>
+</head>
+<body>
+<div class="page">
+    <div class="nav">
+        <img id="logo" src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_128/BILABONNEMENT_rgb_m2nbaw.svg" alt="logo">
+        <h2>**</h2>
+        <div class="section">
+            <a href="/">
+                <img src="/images/database.png">
+                <h3>Dataregistrering</h3>
+            </a>
+        </div>
+        <div class="section">
+            <a href="/">
+                <img src="/images/tools.png">
+                <h3>Skade&Udbedring</h3>
+            </a>
+        </div>
+        <div class="section">
+            <a href="/forretningsudvikler">
+                <img src="/images/briefcase.png">
+                <h3>Forretningsudvikler</h3>
+            </a>
+        </div>
+    </div>
+    <div class="main-content">
+        <h2>Dataregistrering</h2>
+        <div class="main-buttons">
+            <a href="/lejeaftale/create">
+                <button>Opret lejeaftale</button>
+            </a>
+            <a href="/bil/create">
+                <button >Opret bil</button>
+            </a>
+            <a href="/lejeaftale/dataregForsiden">
+                <button id="active">Alle lejeaftaler</button>
+            </a>
+
+            <a href="/bil/viewAll">
+                <button>Alle Biler</button>
+            </a>
+            <a href="/statistik">
+                <button>Alle udlejede biler</button>
+            </a>
+        </div>
+        <div class="dynamic-content">
+            <div class="container">
+                <h3 th:text="${'Lejeaftale ID: ' + lejeaftale.lejeaftale_id}"></h3>
+                <form th:action="@{'/lejeaftale/update'}"  method="post">
+                    <label>
+                         Lejeaftale ID:
+                        <input type="hidden" th:field="*{lejeaftale.lejeaftale_id}">
+                        <span th:text="${lejeaftale.lejeaftale_id}"></span>
+                    </label>
+                    <label>
+                        Stelnummer:
+                    <input type="text" th:field="*{lejeaftale.stelnummer}"readonly/>
+                    </label>
+                    <label>
+                        Kunde Nr:
+                    <input type="text" th:field="*{lejeaftale.kunde_nr}"readonly/>
+                    </label>
+                    <label>
+                        Start Dato:
+                        <input type="date" th:field="*{lejeaftale.start_dato}">
+                    </label>
+                    <label>
+                        Slut Dato:
+                        <input type="date" th:field="*{lejeaftale.slut_dato}">
+                    </label>
+                    <label>
+                        LejePris:
+                    <input type="text" th:field="*{lejeaftale.pris}"/>
+                    </label>
+                    <label for="afhentningsted">
+                        Afhentningsted:
+                        <select th:field="${lejeaftale.afhentningsted}" id="afhentningsted" >
+                            <option value="DS Aarhus">DS Salon Aarhus</option>
+                            <option value="DS Odense">DS Salon Odense</option>
+                            <option value="DS København">DS Salon København</option>
+                            <option value="BIL Hovedkonto">Bilabonnement Hovedkontor</option>
+
+
+                        </select>
+                    </label>
+                    <label for="lejeaftaleStatus">
+                        Afhentningsted:
+                        <select th:field="${lejeaftale.lejeaftaleStatus}" id="lejeaftaleStatus" >
+                            <option value="Aktiv">Aktiv</option>
+                            <option value="Inaktiv">Inaktiv</option>
+
+
+
+                        </select>
+                    </label>
+                    <div class="table-buttons">
+                        <button>Gem</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
