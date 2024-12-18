@@ -20,7 +20,7 @@ public class StatistikController {
 
     @GetMapping
     public String visStatistik(Model model) {
-        // Hent antal udlejede biler og samlet pris
+        // Hent antal udlejede biler og samlet pris for udlejede biler
         int antalLejedeBiler = statistikService.hentAntalLejedeBiler();
         double samletPris = statistikService.hentSamletPrisForLejedeBiler();
 
@@ -32,7 +32,6 @@ public class StatistikController {
         model.addAttribute("samletPris", samletPris);
         model.addAttribute("udlejedeBiler", udlejedeBiler);
 
-        // Returner Thymeleaf-skabelon
         return "home/statistik";
     }
 }

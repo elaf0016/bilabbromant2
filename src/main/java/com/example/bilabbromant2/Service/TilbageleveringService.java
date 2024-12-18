@@ -9,9 +9,11 @@ import java.util.List;
 public class TilbageleveringService {
     @Autowired
     TilbageleveringRepository tilbageleveringRepository;
+
     public List<Tilbagelevering> fetchAllTilbagelevering(){
         return tilbageleveringRepository.fetchAllTilbagelevering();
     }
+
     public void addTilbagelevering(Tilbagelevering tilbagelevering){
         tilbageleveringRepository.addTilbagelevering(tilbagelevering);
     }

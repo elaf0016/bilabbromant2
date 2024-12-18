@@ -11,6 +11,7 @@ import java.util.List;
 public class FejlManglerService {
     @Autowired
     FejelManglerRepository fejelManglerRepository;
+
     public List<FejlMangler> fetchAllFejlMangler(){
         return fejelManglerRepository.fetchAllFejlMangler();
     }

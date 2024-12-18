@@ -15,20 +15,22 @@ public class TilbageleveringController {
     @Autowired
     FejlManglerService fejlManglerService;
 
+    // Viser skade udbedring siden med alle tilbageleveringer og fejl/mangler
     @GetMapping("/skadeUbedring")
     public String indexTilbagelevering(Model model) {
         model.addAttribute("tilbageleveringer", tilbageleveringService.fetchAllTilbagelevering());
         model.addAttribute("fejlMangler", fejlManglerService.fetchAllFejlMangler());
-
         return "home/skadeUbedring";
     }
 
-
+    // Viser formular til oprettelse af en ny tilbagelevering
     @GetMapping("/tilbagelevering/create")
     public String createTilbagelevering(Model model) {
         model.addAttribute("tilbagelevering", new Tilbagelevering());
         return "home/tilbagelevering/createTilbagelevering";
     }
+
+    // Håndterer oprettelse af en ny tilbagelevering
     @PostMapping("/tilbagelevering/create")
     public String createTilbagelevering(@ModelAttribute Tilbagelevering t) {
         tilbageleveringService.addTilbagelevering(t);

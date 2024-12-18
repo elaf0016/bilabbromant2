@@ -1,12 +1,8 @@
 package com.example.bilabbromant2.Service;
-
 import com.example.bilabbromant2.Model.Bil;
-
-
 import com.example.bilabbromant2.Repository.BilRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

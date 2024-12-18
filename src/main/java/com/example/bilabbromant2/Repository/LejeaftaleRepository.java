@@ -1,5 +1,4 @@
 package com.example.bilabbromant2.Repository;
-
 import com.example.bilabbromant2.Model.Lejeaftale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -16,18 +15,22 @@ public class LejeaftaleRepository {
     JdbcTemplate template;
     @Autowired
     BilRepository bilRepository;
+
+    // Henter alle lejeaftaler fra databasen
     public List<Lejeaftale> fetchAllLejeaftale () {
         String sql = "SELECT * FROM lejeaftale";
         RowMapper<Lejeaftale> rowMapper = new BeanPropertyRowMapper<>(Lejeaftale.class);
         return template.query(sql, rowMapper);
     }
+
+    // Tilføjer en ny lejeaftale til databasen
     public void addLejeaftale(Lejeaftale l){
         String sql ="INSERT INTO lejeaftale(lejeaftale_id, kunde_nr,stelnummer,start_dato,slut_dato,pris,afhentningsted) VALUES(?,?,?,?,?,?,?) ";
         template.update(sql,l.getLejeaftale_id(),l.getKunde_nr(),l.getStelnummer(),l.getStart_dato(),l.getSlut_dato(),l.getPris(),l.getAfhentningsted());
         bilRepository.updateBilPris(l.getStelnummer(), l.getPris());
 
     }
-
+    // Finder en lejeaftale baseret på ID
     public Lejeaftale findLejeaftaleById(int lejeaftale_id) {
         String sql = "SELECT * FROM lejeaftale WHERE lejeaftale_id = ?";
         RowMapper<Lejeaftale> rowMapper = new BeanPropertyRowMapper<>(Lejeaftale.class);
@@ -39,14 +42,13 @@ public class LejeaftaleRepository {
         }
     }
 
-
-
-
+    // Sletter en lejeaftale baseret på ID
     public Boolean deleteLejeaftale(int lejeaftale_id){
         String sql = "DELETE FROM lejeaftale WHERE  lejeaftale_id =?";
         return template.update(sql,lejeaftale_id)>0;
 
     }
+    // Opdaterer en eksisterende lejeaftale
     public void updateLejeaftale(Lejeaftale l){
         String sql = "UPDATE lejeaftale SET start_dato=?,slut_dato=?,pris=?,afhentningsted=? WHERE lejeaftale_id=? " ;
         template.update(sql,l.getStart_dato(),l.getSlut_dato(),l.getPris(),l.getAfhentningsted(),l.getLejeaftale_id());

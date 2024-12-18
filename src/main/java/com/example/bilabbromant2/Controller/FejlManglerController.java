@@ -13,11 +13,14 @@ public class FejlManglerController {
     @Autowired
     FejlManglerService fejlManglerService;
 
+    //viser formular til til oprettelse af en ny fejlRapport
     @GetMapping("/fejlMangler/create")
     public String createFejlMangler(Model model) {
         model.addAttribute("fejlMangl", new FejlMangler());
         return "home/tilbagelevering/createFejlMangler";
     }
+
+    //Håndterer oprettelse af fejlRapport
     @PostMapping("/fejlMangler/create")
     public String createFejlMangler(@ModelAttribute FejlMangler f) {
         fejlManglerService.addFejlMangler(f);
