@@ -8,10 +8,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>BilAbonnement</artifactId>
+    <artifactId>bilabbromant2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>BilAbonnement</name>
-    <description>BilAbonnement</description>
+    <name>bilabbromant2</name>
+    <description>bilabbromant2</description>
     <url>http://www.example.com</url>
     <licenses>
         <license>
@@ -27,9 +27,9 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:git://github.com/example/BilAbonnement.git</connection>
-        <developerConnection>scm:git:ssh://github.com:example/BilAbonnement.git</developerConnection>
-        <url>http://github.com/example/BilAbonnement</url>
+        <connection>scm:git:git://github.com/example/bilabbromant2.git</connection>
+        <developerConnection>scm:git:ssh://github.com:example/bilabbromant2.git</developerConnection>
+        <url>http://github.com/example/bilabbromant2</url>
         <tag>HEAD</tag>
     </scm>
     <properties>
@@ -52,12 +52,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>6.2.1</version> <!-- Update to a version where the vulnerability is fixed -->
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
@@ -72,12 +66,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
         </dependency>
     </dependencies>
     <build>
