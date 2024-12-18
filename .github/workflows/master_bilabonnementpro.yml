@@ -57,7 +57,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'bilabbromant2'
+          app-name: 'BilAbonnementPro'
           slot-name: 'Production'
           package: '*.jar'
           
