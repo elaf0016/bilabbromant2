@@ -1,0 +1,51 @@
+USE bilabonnementelaf;
+
+CREATE TABLE Tilbagelevering (
+	tilbagelevering_id INT AUTO_INCREMENT PRIMARY KEY,
+	lejeaftale_id INT NOT NULL,
+	stelnummer VARCHAR(50) NOT NULL,
+	afleveringsdato DATE,
+	tilstandsrapport TEXT,
+	status VARCHAR(50),
+	FOREIGN KEY (lejeaftale_id) REFERENCES Lejeaftale(lejeaftale_id),
+	FOREIGN KEY (stelnummer) REFERENCES Bil(stelnummer)
+);
+
+CREATE TABLE FejlMangler (
+	fejl_id INT AUTO_INCREMENT PRIMARY KEY,
+	tilbagelevering_id INT NOT NULL,
+	beskrivelse TEXT NOT NULL,
+	pris DECIMAL(10,2) NOT NULL,
+	FOREIGN KEY (tilbagelevering_id) REFERENCES Tilbagelevering(tilbagelevering_id)
+);
+
+CREATE TABLE Kunde (
+	kunde_nr INT PRIMARY KEY,
+	navn VARCHAR(100) NOT NULL,
+	email VARCHAR(100),
+	telefonNr VARCHAR(15),
+	adresse VARCHAR(255)
+);
+
+CREATE TABLE Bil (
+	stelnummer VARCHAR(17) PRIMARY KEY,
+	mærke VARCHAR(50) NOT NULL,
+	model VARCHAR(50) NOT NULL,
+	brandstof VARCHAR(20),
+	odometer INT,
+	bilStatus VARCHAR(50),
+	pris DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE Lejeaftale (
+	lejeaftale_id INT AUTO_INCREMENT PRIMARY KEY,
+	kunde_nr INT NOT NULL,
+	stelnummer VARCHAR(17) NOT NULL,
+	start_dato DATE NOT NULL,
+	slut_dato DATE NOT NULL,
+	pris DECIMAL(10,2) NOT NULL,
+	afhentningsted VARCHAR(50),
+	lejeaftaleStatus VARCHAR(50),
+	FOREIGN KEY (kunde_nr) REFERENCES Kunde(kunde_nr),
+	FOREIGN KEY (stelnummer) REFERENCES Bil(stelnummer)
+);
