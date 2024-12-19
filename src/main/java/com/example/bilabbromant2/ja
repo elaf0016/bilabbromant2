@@ -1,4 +1,3 @@
-jdbc:mysql://bilabonnemnt.mysql.database.azure.com:3306/bilabonnementelaf
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
@@ -25,10 +24,6 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -44,19 +39,19 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write #This is required for requesting the JWT
-
+  
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: java-app
-
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AEDB0C5851FA40868AD565302064FB4B }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CEB9B049C8EF459BA81AB5DA41F9003E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4BC4D9B3E3064EAABB0A1DABC0C72953 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_76B391701FF44D1193CFEE6701420794 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5C52184A97E746B0AE5E217FC445DFBA }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_94AEE17F5AC944A0A0EB6FEB50E5887E }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -65,3 +60,4 @@ jobs:
           app-name: 'bilabbromant2-'
           slot-name: 'Production'
           package: '*.jar'
+          
