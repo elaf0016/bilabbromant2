@@ -10,11 +10,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String homePage(Model model) {
-        try {
-            return "home/forside";
-        } catch (Exception e) {
-            return "";
-        }
+        return "home/forside";
     }
 
 
