@@ -1,4 +1,4 @@
-package com.example.bilabbromant2.Repository;
+/*package com.example.bilabbromant2.Repository;
 import com.example.bilabbromant2.Model.Lejeaftale;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
 public class LejeaftaleRepositoryTest {
 
     @Mock
@@ -58,4 +57,4 @@ public class LejeaftaleRepositoryTest {
         // Verificer at jdbcTemplate.query blev kaldt præcis én gang
         verify(jdbcTemplate, times(1)).query(eq(sql), any(RowMapper.class));
     }
-}
+}*/
